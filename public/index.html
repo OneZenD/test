@@ -87,15 +87,15 @@
 
 <?php
 // define variables and set to empty values
-$nameErr = $emailErr = $genderErr = $websiteErr = "";
-$name = $email = $gender = $comment = $website = "";
+$moodErr = "";
+$mood = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   if (empty($_POST["mood"])) {
-    $genderErr = "mood is required";
+    $moodErr = "mood is required";
   } else {
-    $gender = test_input($_POST["mood"]);
+    $mood = test_input($_POST["mood"]);
   }
 }
 ?>
