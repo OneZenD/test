@@ -59,12 +59,14 @@
       <div class="starter-template">
         <h1>Please rate your current mood.</h1>
         <p class="lead">Between 1 and 5 stars, 5 being most happy.</p>
-        <form>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+
           <input type="radio" name="mood" value="5" checked> 5 Stars<br>
           <input type="radio" name="mood" value="4"> 4 Stars<br>
           <input type="radio" name="mood" value="3"> 3 Stars<br>
           <input type="radio" name="mood" value="2"> 2 Stars<br>
           <input type="radio" name="mood" value="1"> 1 Pig
+          <input type="submit" name="submit" value="Submit">
         </form>
       </div>
 
@@ -82,3 +84,18 @@
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
+
+<?php
+// define variables and set to empty values
+$nameErr = $emailErr = $genderErr = $websiteErr = "";
+$name = $email = $gender = $comment = $website = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+  if (empty($_POST["mood"])) {
+    $genderErr = "mood is required";
+  } else {
+    $gender = test_input($_POST["mood"]);
+  }
+}
+?>
